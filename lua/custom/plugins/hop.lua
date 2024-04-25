@@ -3,7 +3,7 @@ return {
   opts = {
     -- HACK: Required because of https://github.com/smoka7/hop.nvim/issues/63
   },
-  config = function()
+  init = function()
     local hop = require 'hop'
     hop.setup {
       keys = 'etovxqpdygfblzhckisuran',

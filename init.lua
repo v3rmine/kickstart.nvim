@@ -242,6 +242,41 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+local joxcat_highlight_augroup = vim.api.nvim_create_augroup('joxcat-highlight-search', { clear = true })
+-- Highlight searches while searching, but not while moving over matches.
+-- Taken from :help incsearch. This should be the default.
+vim.api.nvim_create_autocmd('CmdlineEnter', {
+  desc = 'Highlight searches while searching',
+  pattern = { '/', '?' },
+  callback = function()
+    vim.opt.hlsearch = true
+  end,
+  group = joxcat_highlight_augroup,
+})
+vim.api.nvim_create_autocmd('CmdlineLeave', {
+  desc = 'Remove highlight after leaving search',
+  pattern = { '/', '?' },
+  callback = function()
+    vim.opt.hlsearch = false
+  end,
+  group = joxcat_highlight_augroup,
+})
+
+-- Highlight cursor line briefly when neovim regains focus. This helps to
+-- reorient the user and tell them where they are in the buffer.
+-- Stolen from https://developer.ibm.com/tutorials/l-vim-script-5.
+vim.api.nvim_create_autocmd('FocusGained', {
+  desc = 'Highlight cursor line briefly when neovim regains focus',
+  pattern = '*',
+  callback = function()
+    vim.opt.cursorline = true
+    vim.cmd 'redraw'
+    vim.cmd 'sleep 600m'
+    vim.opt.cursorline = false
+  end,
+  group = vim.api.nvim_create_augroup('joxcat-highlight-cursor-focus', { clear = true }),
+})
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -878,22 +913,114 @@ require('lazy').setup({
     end,
   },
 
-  { -- You can easily change to a different colorscheme.
-    -- Change the name of the colorscheme plugin below, and then
-    -- change the command in the config to whatever the name of that colorscheme is.
-    --
-    -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-    'folke/tokyonight.nvim',
-    priority = 1000, -- Make sure to load this before all the other start plugins.
+  -- { -- You can easily change to a different colorscheme.
+  --   -- Change the name of the colorscheme plugin below, and then
+  --   -- change the command in the config to whatever the name of that colorscheme is.
+  --   --
+  --   -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
+  --   'folke/tokyonight.nvim',
+  --   priority = 1000, -- Make sure to load this before all the other start plugins.
+  --   init = function()
+  --     -- Load the colorscheme here.
+  --     -- Like many other themes, this one has different styles, and you could load
+  --     -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
+  --     vim.cmd.colorscheme 'tokyonight-day'
+  --
+  --     -- You can configure highlights by doing something like:
+  --     vim.cmd.hi 'Comment gui=none'
+  --   end,
+  -- },
+  {
+    'catppuccin/nvim',
+    name = 'catppuccin',
+    priority = 1000,
     init = function()
-      -- Load the colorscheme here.
-      -- Like many other themes, this one has different styles, and you could load
-      -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'tokyonight-day'
-
-      -- You can configure highlights by doing something like:
-      vim.cmd.hi 'Comment gui=none'
+      vim.cmd.colorscheme 'catppuccin-latte'
     end,
+    opts = {
+      integrations = {
+        cmp = true,
+        gitsigns = true,
+        hop = true,
+        mason = true,
+        mini = {
+          enabled = true,
+        },
+        neotree = true,
+        noice = true,
+        treesitter = true,
+        native_lsp = {
+          enabled = true,
+        },
+        notify = true,
+        telescope = {
+          enabled = true,
+        },
+        lsp_trouble = true,
+        which_key = true,
+      },
+      color_overrides = {
+        mocha = {
+          rosewater = '#fed1cb',
+          flamingo = '#ff9185',
+          pink = '#d699b6',
+          mauve = '#cb7ec8',
+          red = '#e06062',
+          maroon = '#e67e80',
+          peach = '#e69875',
+          yellow = '#d3ad63',
+          green = '#b0cc76',
+          teal = '#6db57f',
+          sky = '#7fbbb3',
+          sapphire = '#60aaa0',
+          blue = '#59a6c3',
+          lavender = '#e0d3d4',
+          text = '#e8e1bf',
+          subtext1 = '#e0d7c3',
+          subtext0 = '#d3c6aa',
+          overlay2 = '#9da9a0',
+          overlay1 = '#859289',
+          overlay0 = '#6d6649',
+          surface2 = '#585c4a',
+          surface1 = '#414b50',
+          surface0 = '#374145',
+          base = '#1f2428',
+          mantle = '#161b1d',
+          crust = '#14181a',
+        },
+        latte = {
+          rosewater = '#a43b35',
+          flamingo = '#da3537',
+          pink = '#d332a1',
+          mauve = '#aa3685',
+          red = '#ff3532',
+          maroon = '#de3631',
+          peach = '#f36c0b',
+          yellow = '#bd8800',
+          green = '#596600',
+          teal = '#287e5e',
+          sky = '#52b1c7',
+          sapphire = '#3fb4b8',
+          blue = '#317da7',
+          lavender = '#474155',
+          text = '#4d4742',
+          subtext1 = '#5b5549',
+          subtext0 = '#6d6655',
+          overlay2 = '#786d5a',
+          overlay1 = '#8c7c62',
+          overlay0 = '#a18d66',
+          surface2 = '#c9bea5',
+          surface1 = '#d8d3ba',
+          surface0 = '#e8e2c8',
+          base = '#ebe4c8',
+          mantle = '#e1dab5',
+          crust = '#bdc0a0',
+        },
+      },
+      config = function()
+        vim.keymap.set('n', '<leader>tT', ":let &bg=(&bg=='light'?'dark':'light')<CR>", { desc = '[t]oggle [T]heme' })
+      end,
+    },
   },
 
   -- Highlight todo, notes, etc in comments
