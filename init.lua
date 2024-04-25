@@ -395,6 +395,7 @@ require('lazy').setup({
         { '<leader>s', group = '[S]earch' },
         { '<leader>w', group = '[W]orkspace' },
         { '<leader>t', group = '[T]oggle' },
+        { '<leader>tt', group = '[T]oggle [T]erminal' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
       },
     },
@@ -1018,7 +1019,7 @@ require('lazy').setup({
         },
       },
       config = function()
-        vim.keymap.set('n', '<leader>tT', ":let &bg=(&bg=='light'?'dark':'light')<CR>", { desc = '[t]oggle [T]heme' })
+        vim.keymap.set('n', '<leader>tT', ":let &bg=(&bg=='light'?'dark':'light')<CR>", { desc = '[T]oggle [T]heme' })
       end,
     },
   },
