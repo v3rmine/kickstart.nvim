@@ -5,6 +5,7 @@ vim.keymap.set('n', '<leader>ttb', function()
   vim.cmd 'setlocal nonumber norelativenumber'
   vim.api.nvim_buf_set_keymap(term_buf, 'n', '<Esc>', '<cmd>close<CR>', { noremap = true, silent = true })
   vim.api.nvim_win_close(original_win, false)
+  vim.cmd 'startinsert!'
 end, { desc = '[t]oggle [t]erminal [b]uffer' })
 
 return {
