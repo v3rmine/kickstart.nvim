@@ -183,6 +183,8 @@ vim.g.loaded_netrwPlugin = 1
 vim.g.loaded_netrwSettings = 1
 vim.g.loaded_netrwFileHandlers = 1
 
+vim.g.editorconfig = true
+
 -- [[ Persistent Cursor ]]
 -- SOURCE: https://github.com/LunarVim/LunarVim/issues/4071
 vim.api.nvim_create_autocmd('BufReadPost', {
@@ -1025,7 +1027,24 @@ require('lazy').setup({
   },
 
   -- Highlight todo, notes, etc in comments
-  { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
+  {
+    'folke/todo-comments.nvim',
+    event = 'VimEnter',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    opts = {
+      signs = false,
+      keywords = {
+        TODO = { icon = ' ', color = 'info' },
+        HACK = { icon = ' ', color = 'warning' },
+        NOTE = { icon = ' ', color = 'hint', alt = { 'INFO' } },
+        -- TODO: Add colors for theses
+        BUG = { icon = ' ', color = 'error', alt = { 'FIXME' } },
+        REVIEW = { color = 'info' },
+        DEPRECATED = { color = 'hint' },
+        SOURCE = { color = 'default' },
+      },
+    },
+  },
 
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
