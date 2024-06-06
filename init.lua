@@ -204,6 +204,9 @@ vim.api.nvim_create_autocmd('BufReadPost', {
 --  See `:help hlsearch`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
+-- Close all buffers except the current one
+vim.keymap.set('n', '<leader>bo', '<cmd>%bd<CR>', { desc = 'Close all [b]uffers except the current one' })
+
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
@@ -396,6 +399,7 @@ require('lazy').setup({
         { '<leader>r', group = '[R]ename' },
         { '<leader>s', group = '[S]earch' },
         { '<leader>w', group = '[W]orkspace' },
+        { '<leader>b', group = '[B]uffer' },
         { '<leader>t', group = '[T]oggle' },
         { '<leader>tt', group = '[T]oggle [T]erminal' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
