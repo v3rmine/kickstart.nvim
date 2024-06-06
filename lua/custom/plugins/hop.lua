@@ -3,24 +3,48 @@ return {
   opts = {
     -- HACK: Required because of https://github.com/smoka7/hop.nvim/issues/63
   },
+  keys = {
+    {
+      'f',
+      function()
+        local hop = require 'hop'
+        local directions = require('hop.hint').HintDirection
+        hop.hint_char1 { direction = directions.AFTER_CURSOR, current_line_only = true }
+      end,
+      desc = 'Hop forward in current line',
+    },
+    {
+      'F',
+      function()
+        local hop = require 'hop'
+        local directions = require('hop.hint').HintDirection
+        hop.hint_char1 { direction = directions.BEFORE_CURSOR, current_line_only = true }
+      end,
+      desc = 'Hop backward in current line',
+    },
+    {
+      't',
+      function()
+        local hop = require 'hop'
+        local directions = require('hop.hint').HintDirection
+        hop.hint_char1 { direction = directions.AFTER_CURSOR }
+      end,
+      desc = 'Hop forward',
+    },
+    {
+      'T',
+      function()
+        local hop = require 'hop'
+        local directions = require('hop.hint').HintDirection
+        hop.hint_char1 { direction = directions.BEFORE_CURSOR }
+      end,
+      desc = 'Hop backward',
+    },
+  },
   init = function()
     local hop = require 'hop'
     hop.setup {
       keys = 'etovxqpdygfblzhckisuran',
     }
-    local directions = require('hop.hint').HintDirection
-
-    vim.keymap.set('', 'f', function()
-      hop.hint_char1 { direction = directions.AFTER_CURSOR, current_line_only = true }
-    end, { remap = true })
-    vim.keymap.set('', 'F', function()
-      hop.hint_char1 { direction = directions.BEFORE_CURSOR, current_line_only = true }
-    end, { remap = true })
-    vim.keymap.set('', 't', function()
-      hop.hint_char1 { direction = directions.AFTER_CURSOR }
-    end, { remap = true })
-    vim.keymap.set('', 'T', function()
-      hop.hint_char1 { direction = directions.BEFORE_CURSOR }
-    end, { remap = true })
   end,
 }
