@@ -1,5 +1,5 @@
 return {
-  'joxcat/atac.nvim',
+  'NachoNievaG/atac.nvim',
   dependencies = { 'akinsho/toggleterm.nvim' },
   cmd = { 'Atac' },
   opts = {
