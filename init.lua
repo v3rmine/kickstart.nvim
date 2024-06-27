@@ -185,6 +185,13 @@ vim.g.loaded_netrwFileHandlers = 1
 
 vim.g.editorconfig = true
 
+-- [[ Custom filetypes ]]
+vim.filetype.add {
+  extension = {
+    vto = 'vento',
+  },
+}
+
 -- [[ Persistent Cursor ]]
 -- SOURCE: https://github.com/LunarVim/LunarVim/issues/4071
 vim.api.nvim_create_autocmd('BufReadPost', {
