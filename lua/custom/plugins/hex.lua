@@ -1,5 +1,6 @@
 return {
   'RaafatTurki/hex.nvim',
+  event = { 'BufReadPre', 'BufNewFile' },
   opts = {
     is_file_binary_pre_read = function()
       local binary_ext = { 'out', 'bin', 'png', 'jpg', 'jpeg', 'gif', 'exe', 'dll' }
