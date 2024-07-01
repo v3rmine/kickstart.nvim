@@ -1057,7 +1057,13 @@ require('lazy').setup({
         },
       },
       config = function()
-        vim.keymap.set('n', '<leader>tT', ":let &bg=(&bg=='light'?'dark':'light')<CR>", { desc = '[T]oggle [T]heme' })
+        vim.keymap.set('n', '<leader>tT', function()
+          if vim.g.colors_name == 'catppuccin-latte' then
+            vim.cmd [[colorscheme catppuccin-mocha]]
+          else
+            vim.cmd [[colorscheme catppuccin-latte]]
+          end
+        end, { desc = '[T]oggle [T]heme' })
       end,
     },
   },
