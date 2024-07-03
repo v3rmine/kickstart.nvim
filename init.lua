@@ -734,6 +734,7 @@ require('lazy').setup({
         -- ts_ls = {},
         --
         tsserver = {
+          enabled = false,
           root_dir = nvim_lsp.util.root_pattern 'package.json',
           single_file_support = false,
         },
@@ -771,7 +772,8 @@ require('lazy').setup({
       --
       -- You can add other tools here that you want Mason to install
       -- for you, so that they are available from within Neovim.
-      local ensure_installed = vim.tbl_keys(servers or {})
+      -- vim.tbl_keys(servers or {}) if you want to preinstall the servers
+      local ensure_installed = vim.tbl_keys {}
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
       })
@@ -781,6 +783,9 @@ require('lazy').setup({
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
+            if server.enabled == false then
+              return
+            end
             -- This handles overriding only values explicitly passed
             -- by the server configuration above. Useful when disabling
             -- certain features of an LSP (for example, turning off formatting for ts_ls)
@@ -945,8 +950,8 @@ require('lazy').setup({
           },
           { name = 'nvim_lsp' },
           { name = 'codeium' },
-          { name = 'luasnip' },
           { name = 'path' },
+          { name = 'luasnip' },
         },
       }
     end,
