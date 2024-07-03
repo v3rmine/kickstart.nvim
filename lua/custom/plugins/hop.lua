@@ -1,6 +1,6 @@
 return {
   'smoka7/hop.nvim',
-  event = { 'BufReadPre', 'BufNewFile' },
+  event = { 'VeryLazy' },
   opts = {
     -- HACK: Required because of https://github.com/smoka7/hop.nvim/issues/63
   },
