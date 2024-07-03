@@ -1,8 +1,8 @@
 return {
-  dir = 'custom._color',
+  dir = 'custom.diy.color',
   lazy = false,
   priority = 900,
-  init = function()
-    require('custom._color').setup()
+  config = function()
+    require('custom.diy.color').setup()
   end,
 }
