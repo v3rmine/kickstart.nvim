@@ -1,6 +1,6 @@
 return {
   'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
-  event = { 'BufReadPre', 'BufNewFile' },
+  event = { 'VeryLazy' },
   opts = {},
   init = function()
     vim.diagnostic.config {

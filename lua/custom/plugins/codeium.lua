@@ -4,6 +4,6 @@ return {
     'nvim-lua/plenary.nvim',
     'hrsh7th/nvim-cmp',
   },
-  event = { 'BufReadPre', 'BufNewFile' },
+  event = { 'InsertEnter' },
   opts = {},
 }
