@@ -319,7 +319,7 @@ vim.opt.rtp:prepend(lazypath)
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
-  'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+  { 'tpope/vim-sleuth', event = { 'VimEnter' } }, -- Detect tabstop and shiftwidth automatically
 
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
@@ -327,6 +327,20 @@ require('lazy').setup({
   --
   -- Use `opts = {}` to force a plugin to be loaded.
   --
+<<<<<<< HEAD
+||||||| parent of c0e7dc5 (feat: lazy loading as much as possible)
+  --  This is equivalent to:
+  --    require('Comment').setup({})
+
+  -- "gc" to comment visual regions/lines
+  { 'numToStr/Comment.nvim', opts = {} },
+=======
+  --  This is equivalent to:
+  --    require('Comment').setup({})
+
+  -- "gc" to comment visual regions/lines
+  { 'numToStr/Comment.nvim', event = { 'VeryLazy' }, opts = {} },
+>>>>>>> c0e7dc5 (feat: lazy loading as much as possible)
 
   -- Here is a more advanced example where we pass configuration
   -- options to `gitsigns.nvim`. This is equivalent to the following Lua:
@@ -335,6 +349,7 @@ require('lazy').setup({
   -- See `:help gitsigns` to understand what the configuration keys do
   { -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
+    event = { 'VeryLazy' },
     opts = {
       signs = {
         add = { text = '+' },
@@ -363,6 +378,7 @@ require('lazy').setup({
 
   { -- Useful plugin to show you pending keybinds.
     'folke/which-key.nvim',
+<<<<<<< HEAD
     event = 'VimEnter', -- Sets the loading event to 'VimEnter'
     opts = {
       icons = {
@@ -401,6 +417,15 @@ require('lazy').setup({
           F12 = '<F12>',
         },
       },
+||||||| parent of c0e7dc5 (feat: lazy loading as much as possible)
+    event = 'VimEnter', -- Sets the loading event to 'VimEnter'
+    config = function() -- This is the function that runs, AFTER loading
+      require('which-key').setup()
+=======
+    event = 'VeryLazy',
+    config = function() -- This is the function that runs, AFTER loading
+      require('which-key').setup()
+>>>>>>> c0e7dc5 (feat: lazy loading as much as possible)
 
       -- Document existing key chains
       spec = {
@@ -425,7 +450,7 @@ require('lazy').setup({
 
   { -- Fuzzy Finder (files, lsp, etc)
     'nvim-telescope/telescope.nvim',
-    event = 'VimEnter',
+    event = 'VeryLazy',
     branch = '0.1.x',
     dependencies = {
       'nvim-lua/plenary.nvim',
@@ -545,6 +570,7 @@ require('lazy').setup({
   {
     -- Main LSP Configuration
     'neovim/nvim-lspconfig',
+    event = { 'VeryLazy' },
     dependencies = {
       -- Automatically install LSPs and related tools to stdpath for Neovim
       { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
@@ -794,8 +820,14 @@ require('lazy').setup({
 
   { -- Autoformat
     'stevearc/conform.nvim',
+<<<<<<< HEAD
     event = { 'BufWritePre' },
     cmd = { 'ConformInfo' },
+||||||| parent of c0e7dc5 (feat: lazy loading as much as possible)
+    lazy = false,
+=======
+    event = { 'VeryLazy' },
+>>>>>>> c0e7dc5 (feat: lazy loading as much as possible)
     keys = {
       {
         '<leader>f',
@@ -830,7 +862,7 @@ require('lazy').setup({
         -- python = { "isort", "black" },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
-        -- javascript = { "prettierd", "prettier", stop_after_first = true },
+        javascript = { 'prettierd', 'prettier', stop_after_first = true },
       },
     },
   },
@@ -1071,7 +1103,7 @@ require('lazy').setup({
   -- Highlight todo, notes, etc in comments
   {
     'folke/todo-comments.nvim',
-    event = 'VimEnter',
+    event = { 'VeryLazy' },
     dependencies = { 'nvim-lua/plenary.nvim' },
     opts = {
       signs = false,
@@ -1090,6 +1122,7 @@ require('lazy').setup({
 
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
+    event = { 'VeryLazy' },
     config = function()
       -- Better Around/Inside textobjects
       --
@@ -1127,6 +1160,7 @@ require('lazy').setup({
   },
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
+    event = { 'VeryLazy' },
     build = ':TSUpdate',
     main = 'nvim-treesitter.configs', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
