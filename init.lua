@@ -326,20 +326,11 @@ require('lazy').setup({
   --
   -- Use `opts = {}` to force a plugin to be loaded.
   --
-<<<<<<< HEAD
-||||||| parent of c0e7dc5 (feat: lazy loading as much as possible)
-  --  This is equivalent to:
-  --    require('Comment').setup({})
-
-  -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
-=======
   --  This is equivalent to:
   --    require('Comment').setup({})
 
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', event = { 'VeryLazy' }, opts = {} },
->>>>>>> c0e7dc5 (feat: lazy loading as much as possible)
 
   -- Here is a more advanced example where we pass configuration
   -- options to `gitsigns.nvim`. This is equivalent to the following Lua:
@@ -376,7 +367,6 @@ require('lazy').setup({
 
   { -- Useful plugin to show you pending keybinds.
     'folke/which-key.nvim',
-<<<<<<< HEAD
     event = 'VimEnter', -- Sets the loading event to 'VimEnter'
     opts = {
       -- delay between pressing a key and opening which-key (milliseconds)
@@ -418,15 +408,6 @@ require('lazy').setup({
           F12 = '<F12>',
         },
       },
-||||||| parent of c0e7dc5 (feat: lazy loading as much as possible)
-    event = 'VimEnter', -- Sets the loading event to 'VimEnter'
-    config = function() -- This is the function that runs, AFTER loading
-      require('which-key').setup()
-=======
-    event = 'VeryLazy',
-    config = function() -- This is the function that runs, AFTER loading
-      require('which-key').setup()
->>>>>>> c0e7dc5 (feat: lazy loading as much as possible)
 
       -- Document existing key chains
       spec = {
@@ -825,14 +806,8 @@ require('lazy').setup({
 
   { -- Autoformat
     'stevearc/conform.nvim',
-<<<<<<< HEAD
     event = { 'BufWritePre' },
     cmd = { 'ConformInfo' },
-||||||| parent of c0e7dc5 (feat: lazy loading as much as possible)
-    lazy = false,
-=======
-    event = { 'VeryLazy' },
->>>>>>> c0e7dc5 (feat: lazy loading as much as possible)
     keys = {
       {
         '<leader>f',
@@ -844,7 +819,7 @@ require('lazy').setup({
       },
     },
     opts = {
-      notify_on_error = false,
+      notify_on_error = true,
       format_on_save = function(bufnr)
         -- Disable "format_on_save lsp_fallback" for languages that don't
         -- have a well standardized coding style. You can add additional
@@ -857,8 +832,9 @@ require('lazy').setup({
           lsp_format_opt = 'fallback'
         end
         return {
-          timeout_ms = 500,
+          timeout_ms = 1000,
           lsp_format = lsp_format_opt,
+          lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
         }
       end,
       formatters_by_ft = {
@@ -868,6 +844,11 @@ require('lazy').setup({
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         javascript = { 'prettierd', 'prettier', stop_after_first = true },
+        javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
+        ['javascript.jsx'] = { 'prettierd', 'prettier', stop_after_first = true },
+        typescript = { 'prettierd', 'prettier', stop_after_first = true },
+        typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
+        ['typescript.tsx'] = { 'prettierd', 'prettier', stop_after_first = true },
       },
     },
   },
