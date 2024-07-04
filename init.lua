@@ -719,6 +719,7 @@ require('lazy').setup({
         -- gopls = {},
         -- pyright = {},
         rust_analyzer = {
+          enabled = false,
           settings = {
             ['rust-analyzer'] = {
               imports = {
