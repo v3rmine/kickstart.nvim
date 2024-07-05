@@ -18,6 +18,13 @@ M.setup = function()
       vim.notify('Saved colorscheme: ' .. args.match, vim.log.levels.INFO, { title = 'ColorScheme' })
       vim.fn.jobstart("sed -i '' -e 's/\\[\\[colorscheme .*\\]\\]/[[colorscheme " .. args.match .. "]]/' " .. colorscheme_file)
       -- vim.fn.jobstart("sed -i '' -e 's/include colorscheme_.*/include colorscheme_" .. args.match .. "/' ~/.config/kitty/kitty.conf")
+
+      -- Set current kitty theme
+      if args.match == 'catppuccin-latte' then
+        vim.fn.jobstart 'kitty +kitten themes --reload-in=all "Everforest Light Soft"'
+      elseif args.match == 'catppuccin-mocha' then
+        vim.fn.jobstart 'kitty +kitten themes --reload-in=all Catppuccin-Mocha'
+      end
     end,
   })
 end
