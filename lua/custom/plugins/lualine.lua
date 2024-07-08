@@ -3,10 +3,10 @@ return {
   event = 'VeryLazy',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   config = function()
-    vim.opt.showmode = false
-
     local lualine = require 'lualine'
+    local theme = require 'lualine.themes.auto'
     local colors = require('catppuccin.palettes').get_palette(nil)
+
     local conditions = {
       buffer_not_empty = function()
         return vim.fn.empty(vim.fn.expand '%:t') ~= 1
@@ -20,12 +20,15 @@ return {
         return gitdir and #gitdir > 0 and #gitdir < #filepath
       end,
     }
+
+    -- Remove the background
+    theme.normal.c.bg = 'None'
     local config = {
       options = {
         -- Disable sections and component separators
         component_separators = '',
         section_separators = '',
-        theme = 'auto',
+        theme = theme,
         globalstatus = true,
       },
       sections = {
@@ -63,14 +66,14 @@ return {
       function()
         return '▊'
       end,
-      color = { fg = colors.blue }, -- Sets highlighting of component
+      color = { fg = colors.mauve }, -- Sets highlighting of component
       padding = { left = 0, right = 1 }, -- We don't need space before this
     }
 
     ins_left {
       -- mode component
       function()
-        return ''
+        return ' '
       end,
       color = function()
         -- auto change color according to neovims mode
@@ -153,7 +156,7 @@ return {
         end
         return msg
       end,
-      icon = ' LSP:',
+      icon = '  LSP:',
       color = { fg = '#ffffff', gui = 'bold' },
     }
 
@@ -194,7 +197,7 @@ return {
       function()
         return '▊'
       end,
-      color = { fg = colors.blue },
+      color = { fg = colors.mauve },
       padding = { left = 1 },
     }
 

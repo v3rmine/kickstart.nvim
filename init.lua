@@ -567,8 +567,7 @@ require('lazy').setup({
       'WhoIsSethDaniel/mason-tool-installer.nvim',
 
       -- Useful status updates for LSP.
-      -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', opts = {} },
+      'j-hui/fidget.nvim',
 
       -- Allows extra capabilities provided by nvim-cmp
       'hrsh7th/cmp-nvim-lsp',
@@ -1108,6 +1107,9 @@ require('lazy').setup({
         DEPRECATED = { color = 'hint' },
         SOURCE = { color = 'default' },
       },
+    },
+    keys = {
+      { '<leader>ct', '<cmd>TodoQuickFix<cr>', desc = 'Open [T]odo List' },
     },
   },
 
