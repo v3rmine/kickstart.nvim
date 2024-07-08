@@ -1114,6 +1114,9 @@ require('lazy').setup({
         SOURCE = { color = 'default' },
       },
     },
+    keys = {
+      { '<leader>ct', '<cmd>TodoQuickFix<cr>', desc = 'Open [T]odo List' },
+    },
   },
 
   { -- Collection of various small independent plugins/modules
