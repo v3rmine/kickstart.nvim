@@ -91,7 +91,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
 -- See `:help vim.opt`
@@ -349,6 +349,9 @@ require('lazy').setup({
         changedelete = { text = '~' },
       },
     },
+    keys = {
+      { '<leader>gB', '<cmd>Gitsigns blame_line<cr>', desc = '[G]it [B]lame' },
+    },
   },
 
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
@@ -418,7 +421,8 @@ require('lazy').setup({
         { '<leader>b', group = '[B]uffer' },
         { '<leader>t', group = '[T]oggle' },
         { '<leader>tt', group = '[T]oggle [T]erminal' },
-        { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+        { '<leader>g', group = '[G]it' },
+        { '<leader>gh', group = 'Git [H]unk', mode = { 'n', 'v' } },
       },
     },
   },
@@ -794,6 +798,16 @@ require('lazy').setup({
             if server.enabled == false then
               return
             end
+
+            local navic_ok, navic = pcall(require, 'nvim-navic')
+            local prev_on_attach = server.on_attach
+            server.on_attach = function(client, bufnr)
+              if navic_ok and client.server_capabilities.documentSymbolProvider then
+                navic.attach(client, bufnr)
+              end
+              prev_on_attach(client, bufnr)
+            end
+
             -- This handles overriding only values explicitly passed
             -- by the server configuration above. Useful when disabling
             -- certain features of an LSP (for example, turning off formatting for ts_ls)
