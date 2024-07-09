@@ -4,7 +4,7 @@ return {
   opts = {
     view = {
       merge_tool = {
-        layout = 'diff2_horizontal',
+        layout = 'diff3_horizontal',
       },
     },
     keymaps = {
