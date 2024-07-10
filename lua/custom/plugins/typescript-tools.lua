@@ -24,7 +24,7 @@ return {
         -- possible values: ("off"|"all"|"implementations_only"|"references_only")
         code_lens = 'off',
         jsx_close_tag = {
-          enable = true,
+          enable = false,
           filetypes = { 'javascriptreact', 'typescriptreact' },
         },
       },
