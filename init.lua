@@ -689,6 +689,8 @@ require('lazy').setup({
             map('<leader>th', function()
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
             end, '[T]oggle Inlay [H]ints')
+
+            vim.lsp.inlay_hint.enable()
           end
         end,
       })
@@ -762,6 +764,7 @@ require('lazy').setup({
           -- capabilities = {},
           settings = {
             Lua = {
+              hint = { enable = true },
               completion = {
                 callSnippet = 'Replace',
               },
