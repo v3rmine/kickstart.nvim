@@ -296,6 +296,17 @@ vim.api.nvim_create_autocmd('FocusGained', {
   group = vim.api.nvim_create_augroup('joxcat-highlight-cursor-focus', { clear = true }),
 })
 
+-- [[ Neovide ]]
+if vim.g.neovide then
+  vim.g.neovide_refresh_rate = 60 -- default 60
+  vim.g.neovide_refresh_rate_idle = 5 -- default 5
+  vim.g.neovide_cursor_animation_length = 0.1 -- default 0.13
+  vim.g.neovide_cursor_trail_size = 0.5 -- default 0.8
+  vim.g.neovide_cursor_animate_in_insert_mode = false -- default true
+  vim.g.neovide_cursor_animate_command_line = false -- default true
+  vim.g.neovide_cursor_vfx_mode = 'pixiedust' -- default ''
+end
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
