@@ -1,20 +1,21 @@
 return {
   'shellRaining/hlchunk.nvim',
   event = { 'VeryLazy' },
+  dependencies = { 'nvim-treesitter/nvim-treesitter' },
   opts = {
     indent = {
       enable = false,
-      use_treesitter = true,
     },
     chunk = {
       enable = true,
-      notify = true,
+      notify = false,
       use_treesitter = true,
+      textobject = 'ic',
       chars = {
         right_arrow = '─',
       },
-      duration = 200,
-      delay = 150,
+      duration = 150,
+      delay = 100,
     },
   },
 }

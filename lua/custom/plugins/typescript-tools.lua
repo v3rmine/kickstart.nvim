@@ -1,5 +1,5 @@
 local inlayHints = {
-  includeInlayParameterNameHints = 'all',
+  includeInlayParameterNameHints = 'none',
   includeInlayParameterNameHintsWhenArgumentMatchesName = false,
   includeInlayFunctionParameterTypeHints = true,
   includeInlayVariableTypeHints = true,
@@ -21,12 +21,6 @@ return {
       end,
       settings = {
         tsserver_file_preferences = vim.tbl_deep_extend('force', inlayHints, {}),
-        -- possible values: ("off"|"all"|"implementations_only"|"references_only")
-        code_lens = 'off',
-        jsx_close_tag = {
-          enable = false,
-          filetypes = { 'javascriptreact', 'typescriptreact' },
-        },
       },
     }
   end,
