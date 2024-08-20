@@ -385,22 +385,22 @@ require('lazy').setup({
       require('which-key').setup()
 
       -- Document existing key chains
-      require('which-key').register {
-        ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
-        ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
-        ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
-        ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
-        ['<leader>b'] = { name = '[B]uffer', _ = 'which_key_ignore' },
-        ['<leader>t'] = { name = '[T]oggle', _ = 'which_key_ignore' },
-        ['<leader>tt'] = { name = '[T]oggle [T]erminal', _ = 'which_key_ignore' },
-        ['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
-        ['<leader>gh'] = { name = '[G]it [H]unk', _ = 'which_key_ignore' },
-        ['<leader>x'] = { name = 'Trouble', _ = 'which_key_ignore' },
+      require('which-key').add {
+        { '<leader>c', group = '[C]ode' },
+        { '<leader>d', group = '[D]ocument' },
+        { '<leader>s', group = '[S]earch' },
+        { '<leader>w', group = '[W]orkspace' },
+        { '<leader>b', group = '[B]uffer' },
+        { '<leader>t', group = '[T]oggle' },
+        { '<leader>tt', group = '[T]oggle [T]erminal' },
+        { '<leader>g', group = '[G]it' },
+        { '<leader>gh', group = '[G]it [H]unk' },
+        { '<leader>x', group = 'Trouble' },
       }
       -- visual mode
-      require('which-key').register({
-        ['<leader>gh'] = { '[G]it [H]unk' },
-      }, { mode = 'v' })
+      require('which-key').add {
+        { '<leader>gh', desc = '[G]it [H]unk', mode = 'v' },
+      }
     end,
   },
 
