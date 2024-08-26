@@ -787,6 +787,20 @@ require('lazy').setup({
             },
           },
         },
+
+        svelte = {
+          settings = {
+            svelte = {
+              plugin = {
+                css = {
+                  diagnostics = {
+                    enable = false,
+                  },
+                },
+              },
+            },
+          },
+        },
       }
 
       -- Ensure the servers and tools above are installed
