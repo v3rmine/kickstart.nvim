@@ -9,6 +9,9 @@ return {
   config = function()
     require('better-diagnostic-virtual-text').setup {
       inline = false,
+      ui = {
+        above = false,
+      },
     }
   end,
 }
