@@ -771,10 +771,6 @@ require('lazy').setup({
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         -- ts_ls = {},
         --
-        eslint = {
-          enabled = false,
-        },
-
         tsserver = {
           enabled = false,
           root_dir = nvim_lsp.util.root_pattern 'package.json',
