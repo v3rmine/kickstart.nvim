@@ -771,6 +771,10 @@ require('lazy').setup({
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         -- ts_ls = {},
         --
+        eslint = {
+          enabled = false,
+        },
+
         tsserver = {
           enabled = false,
           root_dir = nvim_lsp.util.root_pattern 'package.json',
@@ -896,6 +900,7 @@ require('lazy').setup({
         typescript = { 'prettierd', 'prettier', stop_after_first = true },
         typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
         ['typescript.tsx'] = { 'prettierd', 'prettier', stop_after_first = true },
+        astro = { 'prettierd', 'prettier', stop_after_first = true },
       },
     },
   },

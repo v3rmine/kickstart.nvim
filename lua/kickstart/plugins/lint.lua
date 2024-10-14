@@ -16,6 +16,7 @@ return {
         ['typescript.tsx'] = { 'eslint_d' },
         terraform = { 'tflint' },
         proto = { 'protolint' },
+        astro = { 'eslint_d' },
       }
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,
