@@ -7,7 +7,9 @@ return {
       local lint = require 'lint'
       lint.linters_by_ft = {
         markdown = { 'markdownlint' },
-        sh = { 'shellcheck', 'shellharden' },
+        sh = {
+          'shellcheck' --[[ , 'shellharden' ]],
+        },
         javascript = { 'eslint_d' },
         javascriptreact = { 'eslint_d' },
         ['javascript.jsx'] = { 'eslint_d' },

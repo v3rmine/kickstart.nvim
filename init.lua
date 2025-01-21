@@ -936,6 +936,7 @@ require('lazy').setup({
       --  into multiple repos for maintenance purposes.
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
+      'hrsh7th/cmp-nvim-lua',
     },
     config = function()
       -- See `:help cmp`
@@ -1010,7 +1011,8 @@ require('lazy').setup({
             group_index = 0,
           },
           { name = 'nvim_lsp' },
-          { name = 'codeium' },
+          -- { name = 'codeium' },
+          { name = 'nvim_lua' },
           { name = 'path' },
           { name = 'luasnip' },
         },
