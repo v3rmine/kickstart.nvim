@@ -1,3 +1,3 @@
 return function()
-  vim.cmd [[colorscheme catppuccin-latte]]
+  vim.cmd [[colorscheme duskfox]]
 end

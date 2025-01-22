@@ -20,10 +20,10 @@ M.setup = function()
       -- vim.fn.jobstart("sed -i '' -e 's/include colorscheme_.*/include colorscheme_" .. args.match .. "/' ~/.config/kitty/kitty.conf")
 
       -- Set current kitty theme
-      if args.match == 'catppuccin-latte' then
-        vim.fn.jobstart 'kitty +kitten themes --reload-in=all "Everforest Light Soft"'
-      elseif args.match == 'catppuccin-mocha' then
-        vim.fn.jobstart 'kitty +kitten themes --reload-in=all Catppuccin-Mocha'
+      if args.match == 'dayfox' then
+        vim.fn.jobstart 'kitty +kitten themes --reload-in=all dayfox'
+      elseif args.match == 'duskfox' then
+        vim.fn.jobstart 'kitty +kitten themes --reload-in=all duskfox'
       end
     end,
   })

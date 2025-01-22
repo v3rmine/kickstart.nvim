@@ -5,7 +5,7 @@ return {
   config = function()
     local lualine = require 'lualine'
     local theme = require 'lualine.themes.auto'
-    local colors = require('catppuccin.palettes').get_palette(nil)
+    local colors = require('nightfox.palette').load 'duskfox'
 
     local conditions = {
       buffer_not_empty = function()
@@ -66,7 +66,7 @@ return {
       function()
         return '▊'
       end,
-      color = { fg = colors.mauve }, -- Sets highlighting of component
+      color = { fg = colors.magenta.base }, -- Sets highlighting of component
       padding = { left = 0, right = 1 }, -- We don't need space before this
     }
 
@@ -78,26 +78,26 @@ return {
       color = function()
         -- auto change color according to neovims mode
         local mode_color = {
-          n = colors.red,
-          i = colors.green,
-          v = colors.blue,
-          [''] = colors.blue,
-          V = colors.blue,
-          c = colors.flamingo,
-          no = colors.red,
-          s = colors.peach,
-          S = colors.peach,
-          [''] = colors.peach,
-          ic = colors.yellow,
-          R = colors.lavender,
-          Rv = colors.lavender,
-          cv = colors.red,
-          ce = colors.red,
-          r = colors.teal,
-          rm = colors.teal,
-          ['r?'] = colors.teal,
-          ['!'] = colors.red,
-          t = colors.red,
+          n = colors.red.base,
+          i = colors.green.base,
+          v = colors.blue.base,
+          [''] = colors.blue.base,
+          V = colors.blue.base,
+          c = colors.pink.base,
+          no = colors.red.base,
+          s = colors.orange.base,
+          S = colors.orange.base,
+          [''] = colors.orange.base,
+          ic = colors.yellow.base,
+          R = colors.magenta.base,
+          Rv = colors.magenta.base,
+          cv = colors.red.base,
+          ce = colors.red.base,
+          r = colors.green.base,
+          rm = colors.green.base,
+          ['r?'] = colors.green.base,
+          ['!'] = colors.red.base,
+          t = colors.red.base,
         }
         return { fg = mode_color[vim.fn.mode()] }
       end,
@@ -113,21 +113,21 @@ return {
     ins_left {
       'filename',
       cond = conditions.buffer_not_empty,
-      color = { fg = colors.flamingo, gui = 'bold' },
+      color = { fg = colors.pink.base, gui = 'bold' },
     }
 
     ins_left { 'location' }
 
-    ins_left { 'progress', color = { fg = colors.surface1, gui = 'bold' } }
+    ins_left { 'progress', color = { fg = colors.green.base, gui = 'bold' } }
 
     ins_left {
       'diagnostics',
       sources = { 'nvim_diagnostic' },
       symbols = { error = ' ', warn = ' ', info = ' ' },
       diagnostics_color = {
-        error = { fg = colors.red },
-        warn = { fg = colors.yellow },
-        info = { fg = colors.teal },
+        error = { fg = colors.red.base },
+        warn = { fg = colors.yellow.base },
+        info = { fg = colors.green.base },
       },
     }
 
@@ -165,20 +165,20 @@ return {
       'o:encoding', -- option component same as &encoding in viml
       fmt = string.upper, -- I'm not sure why it's upper case either ;)
       cond = conditions.hide_in_width,
-      color = { fg = colors.green, gui = 'bold' },
+      color = { fg = colors.green.base, gui = 'bold' },
     }
 
     ins_right {
       'fileformat',
       fmt = string.upper,
       icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
-      color = { fg = colors.green, gui = 'bold' },
+      color = { fg = colors.green.base, gui = 'bold' },
     }
 
     ins_right {
       'branch',
       icon = '',
-      color = { fg = colors.lavender, gui = 'bold' },
+      color = { fg = colors.magenta.base, gui = 'bold' },
     }
 
     ins_right {
@@ -186,9 +186,9 @@ return {
       -- Is it me or the symbol for modified us really weird
       symbols = { added = ' ', modified = '󰝤 ', removed = ' ' },
       diff_color = {
-        added = { fg = colors.green },
-        modified = { fg = colors.peach },
-        removed = { fg = colors.red },
+        added = { fg = colors.green.base },
+        modified = { fg = colors.orange.base },
+        removed = { fg = colors.red.base },
       },
       cond = conditions.hide_in_width,
     }
@@ -197,7 +197,7 @@ return {
       function()
         return '▊'
       end,
-      color = { fg = colors.mauve },
+      color = { fg = colors.magenta.base },
       padding = { left = 1 },
     }
 
