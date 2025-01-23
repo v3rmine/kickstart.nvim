@@ -7,11 +7,11 @@ return {
   },
   config = function()
     require('minuet').setup {
-      provider = 'openai_fim_compatible',
+      provider = 'openai_compatible',
       provider_options = {
-        openai_fim_compatible = {
+        openai_compatible = {
           api_key = 'OPENROUTER_API_KEY',
-          end_point = 'https://openrouter.ai/api/v1',
+          end_point = 'https://openrouter.ai/api/v1/chat/completions',
           name = 'OpenRouter',
           model = 'google/gemini-flash-1.5',
           stream = true,

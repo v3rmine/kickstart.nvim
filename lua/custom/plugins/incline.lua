@@ -53,9 +53,9 @@ return {
       }
     end
 
-    if vim.g.colors_name == 'catppuccin-latte' then
+    if vim.g.colors_name == 'dayfox' then
       init '#E5D9F2'
-    elseif vim.g.colors_name == 'catppuccin-mocha' then
+    elseif vim.g.colors_name == 'nightfox' then
       init '#8967B3'
     else
       init '#44406e'
@@ -63,9 +63,9 @@ return {
 
     vim.api.nvim_create_autocmd('ColorScheme', {
       callback = function(args)
-        if args.match == 'catppuccin-latte' then
+        if args.match == 'dayfox' then
           init '#E5D9F2'
-        elseif args.match == 'catppuccin-mocha' then
+        elseif args.match == 'nightfox' then
           init '#8967B3'
         end
       end,

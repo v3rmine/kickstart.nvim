@@ -1,3 +1,3 @@
 return function()
-  vim.cmd [[colorscheme duskfox]]
+  vim.cmd [[colorscheme dayfox]]
 end

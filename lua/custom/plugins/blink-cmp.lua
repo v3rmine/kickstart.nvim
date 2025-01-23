@@ -68,7 +68,6 @@ return {
             'avante_commands',
             'avante_mentions',
             'avante_files',
-            'minuet',
             'buffer',
           },
           cmdline = {},
@@ -121,7 +120,7 @@ return {
 
           menu = {
             draw = {
-              columns = { { 'kind_icon' }, { 'label', 'label_description', gap = 1 }, { 'kind', 'source_name' } },
+              columns = { { 'kind_icon' }, { 'label', 'label_description', gap = 1 }, { 'kind', 'source_name', gap = 1 } },
               treesitter = { 'lsp' },
             },
           },
