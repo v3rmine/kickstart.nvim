@@ -14,10 +14,11 @@ return {
       openrouter = {
         __inherited_from = 'openai',
         endpoint = 'https://openrouter.ai/api/v1',
+        -- anthropic/claude-3.5-sonnet:beta: Popular dev model but fcking costly (3$in/15$out)
         -- deepseek/deepseek-r1: GPT-o1 like costly + long but accurate (0.55$in/2.19$out)
         -- mistralai/codestral-2501: Cheaper but still accurate (0.3$in/0.9$out)
         -- google/gemini-flash-1.5: Cheapest and enormous context (0.075$in/0.3$out)
-        model = 'google/gemini-flash-1.5',
+        model = 'deepseek/deepseek-r1',
         api_key_name = 'OPENROUTER_API_KEY',
       },
     },
