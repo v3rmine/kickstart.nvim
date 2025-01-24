@@ -3,6 +3,7 @@ local ignore_buftypes = { 'nofile', 'prompt', 'popup' }
 
 return {
   'nvim-focus/focus.nvim',
+  enabled = false,
   version = false,
   event = 'WinEnter',
   opts = {

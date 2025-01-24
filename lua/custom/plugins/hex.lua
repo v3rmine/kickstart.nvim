@@ -3,7 +3,7 @@ return {
   event = { 'BufReadPre', 'BufNewFile' },
   opts = {
     is_file_binary_pre_read = function()
-      local binary_ext = { 'out', 'bin', 'png', 'jpg', 'jpeg', 'gif', 'exe', 'dll' }
+      local binary_ext = { 'out', 'bin', 'png', 'jpg', 'jpeg', 'gif', 'exe', 'dll', 'raw' }
       -- only work on normal buffers
       if vim.bo.ft ~= '' then
         return false

@@ -1,20 +1,21 @@
-vim.keymap.set('n', '<leader>ttb', function()
-  local original_win = vim.api.nvim_get_current_win()
-  vim.cmd 'split | term'
-  local term_buf = vim.api.nvim_get_current_buf()
-  vim.cmd 'setlocal nonumber norelativenumber'
-  vim.api.nvim_buf_set_keymap(term_buf, 'n', '<Esc>', '<cmd>close<CR>', { noremap = true, silent = true })
-  vim.api.nvim_win_close(original_win, false)
-  vim.cmd 'startinsert!'
-end, { desc = '[t]oggle [t]erminal [b]uffer' })
-
 return {
   'akinsho/toggleterm.nvim',
+  enabled = false,
   cmd = { 'ToggleTerm', 'ToggleTermToggleAll' },
   opts = {
     -- SOURCE: https://github.com/akinsho/toggleterm.nvim
   },
   init = function()
+    vim.keymap.set('n', '<leader>ttb', function()
+      local original_win = vim.api.nvim_get_current_win()
+      vim.cmd 'split | term'
+      local term_buf = vim.api.nvim_get_current_buf()
+      vim.cmd 'setlocal nonumber norelativenumber'
+      vim.api.nvim_buf_set_keymap(term_buf, 'n', '<Esc>', '<cmd>close<CR>', { noremap = true, silent = true })
+      vim.api.nvim_win_close(original_win, false)
+      vim.cmd 'startinsert!'
+    end, { desc = '[t]oggle [t]erminal [b]uffer' })
+
     local Terminal = require('toggleterm.terminal').Terminal
 
     -- Create a floating terminal
