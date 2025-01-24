@@ -156,6 +156,9 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+-- views can only be fully collapsed with the global statusline
+vim.opt.laststatus = 3
+
 -- Folds
 vim.wo.foldmethod = 'expr'
 vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
