@@ -18,7 +18,7 @@ return {
         -- deepseek/deepseek-r1: GPT-o1 like costly + long but accurate (0.55$in/2.19$out)
         -- mistralai/codestral-2501: Cheaper but still accurate (0.3$in/0.9$out)
         -- google/gemini-flash-1.5: Cheapest and enormous context (0.075$in/0.3$out)
-        model = 'deepseek/deepseek-r1',
+        model = 'mistralai/codestral-2501',
         api_key_name = 'OPENROUTER_API_KEY',
       },
     },
