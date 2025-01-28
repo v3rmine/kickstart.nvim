@@ -7,6 +7,30 @@ return {
     -- or leave it empty to use the default settings
     -- refer to the configuration section below
     position = 'bottom',
+
+    ---
+    modes = {
+      symbols = {
+        filter = {
+          any = {
+            kind = {
+              'Class',
+              'Constructor',
+              'Enum',
+              'Field',
+              'Function',
+              'Interface',
+              'Method',
+              'Module',
+              'Namespace',
+              'Package',
+              'Struct',
+              'Trait',
+            },
+          },
+        },
+      },
+    },
   },
   keys = {
     {
@@ -21,7 +45,7 @@ return {
     },
     {
       '<leader>xs',
-      '<cmd>Trouble symbols toggle focus=false<cr>',
+      '<cmd>Trouble symbols toggle focus=true<cr>',
       desc = 'Symbols (Trouble)',
     },
     {
