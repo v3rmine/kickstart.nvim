@@ -196,6 +196,8 @@ vim.filetype.add {
     -- SOURCE: https://github.com/ikatyang/tree-sitter-markdown/issues/14
     -- SOURCE: https://github.com/ventojs/tree-sitter-vento
     vto = 'markdown',
+    -- Butane config files
+    bu = 'yaml',
   },
 }
 
@@ -249,6 +251,14 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left wind
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+
+-- Folds keymaps
+vim.keymap.set('n', '<Leader>-', 'zmzz', { desc = 'zoom out (see less)' })
+vim.keymap.set('n', '<Leader>=', 'zrzz', { desc = 'zoom in (see more)' })
+vim.keymap.set('n', '<Leader>_', 'zM', { desc = 'zoom out max' })
+vim.keymap.set('n', '<Leader>+', 'zR', { desc = 'zoom in max' })
+vim.keymap.set('n', 'Z', 'zkzxzz', { desc = 'prev fold' })
+vim.keymap.set('n', 'X', 'zjzxzz', { desc = 'next fold' })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`

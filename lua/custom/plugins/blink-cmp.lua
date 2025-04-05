@@ -56,6 +56,12 @@ return {
           nerd_font_variant = 'mono',
         },
 
+        -- Do not complete cmdline
+        cmdline = {
+          enabled = false,
+          sources = {},
+        },
+
         -- Default list of enabled providers defined so that you can extend it
         -- elsewhere in your config, without redefining it, due to `opts_extend`
         sources = {
@@ -64,13 +70,11 @@ return {
             'path',
             'nvim_lua',
             'crates',
-            'snippets',
             'avante_commands',
             'avante_mentions',
             'avante_files',
             'buffer',
           },
-          cmdline = {},
           providers = {
             avante_commands = {
               name = 'avante_commands',
